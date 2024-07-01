@@ -24,9 +24,6 @@ A simple link shortener application built with Node.js, Express, MongoDB, and Mo
    ```bash
    git clone https://github.com/mini-360/LinkShortner.git
    cd link-shortener
-   npm install
-   MONGODB_URI=mongodb://localhost:27017/link_shortener
-   npm start
    ```
 2. Install dependencies:
    ```bash
