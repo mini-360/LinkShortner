@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const urlSchema = new mongoose.Schema(
   {
-    sortId: {
+    shortID: {
       type: String,
       required: true,
       unique: true,
