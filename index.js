@@ -11,6 +11,8 @@ connectToMongoDB("mongodb://localhost:27017/short-url").then(() =>
 );
 
 app.use(express.json());
+
+
 app.use("/url", urlRoute);
 
 app.get("/:shortID", async (req, res) => {
