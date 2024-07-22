@@ -2,6 +2,8 @@ import express from "express";
 import urlRoute from "./routes/url.router.js";
 import connectToMongoDB from "./connect.js";
 import { URL } from "./models/url.models.js";
+import path from "path";
+import staticRouter from "./routes/static.router.js";
 
 const app = express();
 
@@ -10,12 +12,17 @@ connectToMongoDB("mongodb://localhost:27017/short-url").then(() =>
   console.log("MongoDB connected ")
 );
 
-app.use(express.json());
+app.set("view engine", "ejs");
+app.set("views", path.resolve("./views"));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/url", urlRoute);
 
-app.get("/:shortID", async (req, res) => {
+app.use("/", staticRouter);
+
+app.get("/url/:shortID", async (req, res) => {
   const shortID = req.params.shortID;
   const entry = await URL.findOneAndUpdate(
     {
