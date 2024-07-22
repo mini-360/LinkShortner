@@ -19,18 +19,14 @@ async function handelGenerateNewURL(req, res) {
   return res.json({ id: shortID });
 }
 async function handleGetAnalytics(req, res) {
-    const shortID = req.params.shortID;
-    console.log(shortID)
-    const result = await URL.findOne({ shortID });
-    console.log(result)
+  const shortID = req.params.shortID;
+  console.log(shortID);
+  const result = await URL.findOne({ shortID });
+  console.log(result);
   return res.json({
     totalClicks: result.visitHistory.length,
-      analytics: result.visitHistory,
-    
+    analytics: result.visitHistory,
   });
 }
 
-export {
-    handelGenerateNewURL,
-    handleGetAnalytics
- };
+export { handelGenerateNewURL, handleGetAnalytics };
