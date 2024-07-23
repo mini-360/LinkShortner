@@ -4,6 +4,9 @@ import connectToMongoDB from "./connect.js";
 import { URL } from "./models/url.models.js";
 import path from "path";
 import staticRouter from "./routes/static.router.js";
+import routerUser from "./routes/user.router.js";
+import cookieParser from "cookie-parser";
+import {restrictToLoggedinUserOnly} from "./middleware/auth.middleware.js"
 
 const app = express();
 
@@ -17,9 +20,10 @@ app.set("views", path.resolve("./views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
-app.use("/url", urlRoute);
-
+app.use("/url",restrictToLoggedinUserOnly, urlRoute);
+app.use("/user", routerUser);
 app.use("/", staticRouter);
 
 app.get("/url/:shortID", async (req, res) => {

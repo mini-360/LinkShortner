@@ -10,4 +10,11 @@ staticRouter.get("/", async (req, res) => {
   });
 });
 
+staticRouter.get("/signup", (req, res) => {
+  return res.render("signup");
+});
+staticRouter.get("/login", (req, res) => {
+  return res.render("login");
+});
+
 export default staticRouter;
