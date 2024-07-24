@@ -20,9 +20,7 @@ async function handleUserLogin(req, res) {
     });
   }
   const token = setUser(user);
-  res.cookie("uid", token, {
-    domain:".abhayraj.dev" // any domain that has with abhayraj.dev
-  });
+  res.cookie("token", token);
   return res.redirect("/");
 }
 

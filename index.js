@@ -7,8 +7,8 @@ import staticRouter from "./routes/static.router.js";
 import routerUser from "./routes/user.router.js";
 import cookieParser from "cookie-parser";
 import {
-  restrictToLoggedinUserOnly,
-  checkAuth,
+  checkForAuthentication,
+  restrictTo,
 } from "./middleware/auth.middleware.js";
 
 const app = express();
@@ -24,10 +24,11 @@ app.set("views", path.resolve("./views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(checkForAuthentication)
 
-app.use("/url", restrictToLoggedinUserOnly, urlRoute);
+app.use("/url",restrictTo(["NORMAL","ADMIN"]), urlRoute);
 app.use("/user", routerUser);
-app.use("/", checkAuth, staticRouter);
+app.use("/", staticRouter);
 
 app.get("/url/:shortID", async (req, res) => {
   const shortID = req.params.shortID;
