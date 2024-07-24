@@ -6,7 +6,10 @@ import path from "path";
 import staticRouter from "./routes/static.router.js";
 import routerUser from "./routes/user.router.js";
 import cookieParser from "cookie-parser";
-import {restrictToLoggedinUserOnly} from "./middleware/auth.middleware.js"
+import {
+  restrictToLoggedinUserOnly,
+  checkAuth,
+} from "./middleware/auth.middleware.js";
 
 const app = express();
 
@@ -22,9 +25,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use("/url",restrictToLoggedinUserOnly, urlRoute);
+app.use("/url", restrictToLoggedinUserOnly, urlRoute);
 app.use("/user", routerUser);
-app.use("/", staticRouter);
+app.use("/", checkAuth, staticRouter);
 
 app.get("/url/:shortID", async (req, res) => {
   const shortID = req.params.shortID;
