@@ -20,7 +20,8 @@ dotenv.config({
 const app = express();
 
 
-connectToMongoDB(process.env.MONGO_URL).then(() => console.log("MongoDB connected "));
+const options = { useNewUrlParser: true, useUnifiedTopology: true, connectTimeoutMS: 10000 };
+connectToMongoDB(process.env.MONGO_URL,options).then(() => console.log("MongoDB connected "));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
