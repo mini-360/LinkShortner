@@ -71,3 +71,10 @@ Several popular link shorteners exist, including:
     ```
 5. Access the application at `http://localhost:8001`.
 
+# How to Use the link shortener
+- First you have to register yourself on the website.For that you have to go http://localhost:8001/signup
+- After registering you can login to the website by going to http://localhost:8001/login
+- After logging in you can shorten the link by putting the link in the input box and clicking on the generate button.
+- You can see the list of all the links that you have shortened by  going to http://localhost:8001/user
+   
+
