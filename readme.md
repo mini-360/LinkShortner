@@ -42,9 +42,7 @@ Several popular link shorteners exist, including:
 - Node.js
 - Express.js
 - MongoDB
-- Mongoose
-- nanoid (for generating unique short URLs)
-- HTML/CSS (for frontend, if applicable)
+- EJS
 
 ## Installation
 
