@@ -1,5 +1,3 @@
-# Link Shortener
-
 # Link Shortener: Make Long URLs Short and Shareable
 
 This project explores the concept of link shorteners, tools that transform long, complex URLs into shorter, more manageable links.
@@ -47,9 +45,7 @@ Several popular link shorteners exist, including:
 - Node.js
 - Express.js
 - MongoDB
-- Mongoose
-- nanoid (for generating unique short URLs)
-- HTML/CSS (for frontend, if applicable)
+- EJS
 
 ## Installation
 
