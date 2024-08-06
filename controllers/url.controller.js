@@ -1,35 +1,25 @@
 import { nanoid } from "nanoid";
 import { URL } from "../models/url.models.js";
-import shortid from "shortid";
 
-async function handelGenerateNewURL(req, res) {
+async function handleGenerateNewShortURL(req, res) {
   const body = req.body;
-  // console.log(body.url);
-  if (!body.url) {
-    return res.status(400).json({ error: "URL is required" });
-  }
-  const shortID = nanoid(8);
-  // console.log(shortID);
-
+  if (!body.url) return res.status(400).json({ error: "URL is required" });
+  const shortId = nanoid(8);
   await URL.create({
-    shortID: shortID,
+    shortId: shortId,
     redirectURL: body.url,
     visitHistory: [],
-    createdBy:req.user._id
   });
-  return res.render("home", {
-    id: shortID,
-  });
+  return res.json({ id: shortId });
 }
-async function handleGetAnalytics(req, res) {
-  const shortID = req.params.shortID;
-  // console.log(shortID);
-  const result = await URL.findOne({ shortID });
-  // console.log(result);
+
+async function handleGetAnalytice(req, res) {
+  const shortId = req.params.shortId;
+  const result = await URL.findOne({ shortId });
   return res.json({
     totalClicks: result.visitHistory.length,
     analytics: result.visitHistory,
   });
 }
 
-export { handelGenerateNewURL, handleGetAnalytics };
+export { handleGenerateNewShortURL, handleGetAnalytice };

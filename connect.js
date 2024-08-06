@@ -1,8 +1,7 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-
-async function connectToMongoDB(url,options) {
-    return mongoose.connect(url,options)
+async function connectToMongoDB(url) {
+  return mongoose.connect(url);
 }
 
-export default connectToMongoDB
+export { connectToMongoDB };
