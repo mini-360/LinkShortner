@@ -8,4 +8,7 @@ function getUser(id) {
   return sessionIdToUserMap.get(id);
 }
 
-export { setUser, getUser };
+module.exports = {
+  setUser,
+  getUser,
+};
