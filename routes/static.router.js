@@ -12,6 +12,11 @@ staticRouter.get("/", async (req, res) => {
 })
 
 
+staticRouter.get("/signup", (req, res) => {
+    return res.render("signup")
+})
+
+
 
 
 export default staticRouter

@@ -9,9 +9,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
+    <%- include('./partials/navbar') %>
   </head>
   <body>
-    <h1>URL Shortner</h1>
+    <!-- <h1>URL Shortner</h1> -->
     <% if (locals.id) { %>
     <p>URL Generated: http://localhost:8001/url/<%= id %></p>
     <% } %>
